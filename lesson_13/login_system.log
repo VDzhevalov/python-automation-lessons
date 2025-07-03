@@ -1,0 +1,6 @@
+
+2025-07-03 22:31:04,828 - INFO - Login event - Username: alice, Status: success - log_event_module.py
+2025-07-03 22:31:04,828 - WARNING - Login event - Username: bob, Status: expired - log_event_module.py
+2025-07-03 22:31:04,828 - ERROR - Login event - Username: carol, Status: failed - log_event_module.py
+2025-07-03 22:31:04,828 - ERROR - Login event - Username: dave, Status: invalid - log_event_module.py
+2025-07-03 22:31:04,828 - ERROR - Login event - Username: admin, Status: unknown - log_event_module.py
