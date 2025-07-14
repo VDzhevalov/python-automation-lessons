@@ -286,21 +286,21 @@ def get_address():
         addrFile = csv.reader(open(full_path('data.csv'), 'r'))
         allAddrs = []
         for addr in addrFile:
-            try:
-                if addr[i] != '':
-                    allAddrs.append(addr[i])
-            except:
-                pass
-        full_addr.append(choice(allAddrs))
-    full_addr = dict(zip(addrParam, full_addr))
-    return full_addr
+            if len(addr) > i and addr[i].strip():  # перевірка на існування та непорожність
+                allAddrs.append(addr[i].strip())
+        if allAddrs:
+            full_addr.append(choice(allAddrs))
+        else:
+            full_addr.append("N/A")  # або можна raise або пустий рядок, за потреби
+    return dict(zip(addrParam, full_addr))
 
 
 def get_hobbies():
     hobbiesFile = csv.reader(open(full_path('data.csv'), 'r'))
     allHobbies = []
     for data in hobbiesFile:
-        if data[4] != '':
+        # if data[4] != '':
+        if data[4]:
             allHobbies.append(data[4])
     hobbies = []
     for _ in range(1, randint(2, 6)):
@@ -361,3 +361,12 @@ class Person:
             "address": self.address,
             "other_attr": self.customAttr
         }
+
+
+'''
+REFERENCE:
+http://www.first-names-meanings.com/country-indian-names.html
+https://www.familyeducation.com/baby-names/browse-origin/surname/indian
+https://thispersondoesnotexist.com/
+https://en.wikipedia.org/wiki/List_of_hobbies
+'''
