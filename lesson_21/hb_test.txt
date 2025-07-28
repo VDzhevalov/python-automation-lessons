@@ -1,0 +1,5 @@
+ERROR: Delay 35 sec at 04:50:42
+ERROR: Delay 35 sec at 03:38:36
+ERROR: Delay 36 sec at 02:26:30
+WARNING: Delay 32 sec at 01:34:38
+ERROR: Delay 35 sec at 01:14:23
