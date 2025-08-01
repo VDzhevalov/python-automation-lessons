@@ -145,3 +145,5 @@ students = session.query(Student).all()
 print("Всі студенти та курси на які вони підписані:")
 for s in students:
     print(f"{s.name}, {s.age}: {[c.title for c in s.courses]}")
+
+session.close()
