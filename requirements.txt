@@ -5,3 +5,5 @@ pillow~=11.3.0
 Flask~=3.1.1
 requests~=2.32.4
 SQLAlchemy~=2.0.42
+Flask-JWT-Extended~=4.7.1
+selenium~=4.34.2
