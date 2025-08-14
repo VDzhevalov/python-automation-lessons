@@ -1,9 +1,9 @@
+import time
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import time
 
 driver = webdriver.Chrome()
 driver.maximize_window()
@@ -26,6 +26,9 @@ try:
         input_elem.send_keys(frame["secret"])
 
         driver.find_element(By.TAG_NAME, "button").click()
+
+        #Додав просто для того, щоб було зрозуміло що робить тест. Інакше дуже швидко все відбувається
+        time.sleep(2)
 
         alert = wait.until(EC.alert_is_present())
         alert_text = alert.text
