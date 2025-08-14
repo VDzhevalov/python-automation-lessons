@@ -1,7 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import time
 
 driver = webdriver.Chrome()
 driver.maximize_window()
@@ -10,6 +12,7 @@ try:
     driver.get("http://localhost:8000/dz.html")
     wait = WebDriverWait(driver, 5)
 
+    # Дані для перевірки
     frame_data = [
         {"id": "frame1", "input_id": "input1", "secret": "Frame1_Secret"},
         {"id": "frame2", "input_id": "input2", "secret": "Frame2_Secret"}
@@ -37,3 +40,4 @@ try:
 
 finally:
     driver.quit()
+
