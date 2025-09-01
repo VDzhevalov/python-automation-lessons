@@ -1,0 +1,55 @@
+name: PyTest (from lesson_30)
+
+on:
+  push:
+    branches: ['**']
+    branches-ignore:
+      - 'gh-pages'
+      - 'dependabot/**'
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+
+      - name: Setup Chrome (for Selenium UI tests)
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Run pytest (lesson_30 only)
+        run: |
+          mkdir -p build/test-reports build/allure-results
+          python -m pytest -q lesson_30/tests \
+            --junitxml=build/test-reports/junit.xml \
+            --alluredir=build/allure-results
+
+      - name: Upload JUnit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-lesson_30
+          path: build/test-reports/junit.xml
+
+      - name: Upload Allure results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-lesson_30
+          path: build/allure-results
