@@ -8,4 +8,4 @@ SQLAlchemy~=2.0.42
 Flask-JWT-Extended~=4.7.1
 selenium~=4.34.2
 psycopg2-binary~=2.9.10
-allure-python-commons~=2.15.0
+allure-pytest
