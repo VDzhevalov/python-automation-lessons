@@ -2,7 +2,6 @@ name: PyTest (from lesson_30)
 
 on:
   push:
-    branches: ['**']
     branches-ignore:
       - 'gh-pages'
       - 'dependabot/**'
