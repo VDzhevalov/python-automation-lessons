@@ -1,3 +1,6 @@
+import os
+import tempfile
+
 import allure
 import pytest
 from selenium import webdriver
@@ -11,6 +14,14 @@ from lesson_30.pages.home_page import HomePage
 @pytest.fixture(scope='session')
 def driver():
     opts = Options()
+    opts.add_argument("--headless=new")
+    opts.add_argument("--no-sandbox")
+    opts.add_argument("--disable-dev-shm-usage")
+    opts.add_argument("--disable-gpu")
+
+    user_data_dir = os.environ.get("CHROME_USER_DATA_DIR") or tempfile.mkdtemp(prefix="chrome-profile-")
+    opts.add_argument(f"--user-data-dir={user_data_dir}")
+
     drv = webdriver.Chrome(options=opts)
     drv.set_window_size(1920, 1080)
     drv.base_url = "https://qauto2.forstudy.space"
